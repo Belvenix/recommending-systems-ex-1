@@ -35,9 +35,10 @@ def sort_key_recs(recs):
 	return recs[1]
 
 rec_num = 10
-for i in ids:
-	print(f'Recommending for {i}:')
-	items = users_df[users_df['player_id'] == i]
+r_a = {}
+for i_d in ids:
+	print(f'Recommending for {i_d}:')
+	items = users_df[users_df['player_id'] == i_d]
 	not_available = []
 	recommendations = {}
 	for item in items.itertuples(index='False'):
@@ -56,9 +57,13 @@ for i in ids:
 	for r in recommendations:
 		l.append((r, recommendations[r]))
 	l = sorted(list(l)[:rec_num], key=sort_key_recs, reverse=True)
+	recs = []
 	for rec, t in l:
 		if rec not in not_available:
 			print(f'{rec} - Score: {t}!')
+			recs.append(rec)
+	r_a[i_d] = recs
+print(r_a)
 		
 				
 		

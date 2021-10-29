@@ -11,7 +11,7 @@ df_game_info = pd.merge(left=dfid, right=dfdesc, on='appid')
 df_game_info['description'] = df_game_info['developer'].str.cat(df_game_info[['publisher', 'platforms', 'categories', 'genres', 'steamspy_tags']], sep=';')
 df_game_info['description'] = df_game_info['description'].str.replace(' ', '')
 df_game_info['description'] = df_game_info['description'].str.replace(';', ' ')
-#df_game_info['description'] = df_game_info['description'].str.cat(df_game_info['short_description'], sep=' ')
+df_game_info['description'] = df_game_info['description'].str.cat(df_game_info['short_description'], sep=' ')
 df_game_info['id'] = df_game_info['name']
 
 lazy = dfmain[['name']].copy()
